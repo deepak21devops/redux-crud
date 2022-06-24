@@ -1,5 +1,6 @@
 import React from "react";
 import "./navbar.css";
+import { Link } from "react-router-dom";
 const NavBar = () => {
   return (
     <div>
@@ -16,9 +17,11 @@ const NavBar = () => {
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="p">
-                All Post
-              </a>
+              <Link to="/allpost">
+                <a class="nav-link active" aria-current="page" href="p">
+                  All Post
+                </a>
+              </Link>
             </li>
           </ul>
 

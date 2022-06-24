@@ -1,25 +1,49 @@
 import "./singlepost.css";
-import React from "react";
+import React, { useState } from "react";
 
 const SinglePost = () => {
+  const [editbool, setEditbool] = useState(false);
   return (
-    <div className=" container w-75">
+    <div className="container w-75 d-flex flex-row">
       <div class="container  my-3">
         <div className="d-flex flex-row   mb-3">
           <h5 className="">Name: </h5>
-          <p className="align-middle mx-5">Deepak Kumar Bakki</p>
+
+          {editbool ? (
+            <input
+              className="align-middle mx-5"
+              type="text"
+              placeholder="Name"
+            ></input>
+          ) : (
+            <p className="align-middle mx-5">Deepak Kumar Bakki</p>
+          )}
         </div>
         <div className="d-flex flex-row   mb-3">
           <h5>Email: </h5>
-          <p className="align-middle mx-5">deepak123@gmail.com</p>
+
+          {editbool ? (
+            <input
+              className="align-middle mx-5"
+              type="text"
+              placeholder="Email"
+            ></input>
+          ) : (
+            <p className="align-middle mx-5">deepak123@gmail.com</p>
+          )}
         </div>
         <div className="d-flex flex-row mb-3  ">
           <h5>Content: </h5>
-          <p className="text-break mx-3">
-            lorem10lorem10lorem10lorem10lorem10lorem10lorem10l
-            orem10lorem10lorem10lorem10lorem10lorem10lorem10lo
-            rem10lorem10lorem10
-          </p>
+
+          {editbool ? (
+            <textarea className="text-break mx-3"></textarea>
+          ) : (
+            <p className="text-break mx-3">
+              lorem10lorem10lorem10lorem10lorem10lorem10lorem10l
+              orem10lorem10lorem10lorem10lorem10lorem10lorem10lo
+              rem10lorem10lorem10
+            </p>
+          )}
         </div>
         <div className="d-flex flex-row  mb-3">
           <h5>Date: </h5>
@@ -27,7 +51,16 @@ const SinglePost = () => {
         </div>
         <div className="d-flex flex-row  mb-3">
           <h5>Author Name: </h5>
-          <p className="align-middle mx-5">Edward Cullen</p>
+
+          {editbool ? (
+            <input
+              className="align-middle mx-5"
+              type="text"
+              placeholder="Author Name"
+            ></input>
+          ) : (
+            <p className="align-middle mx-5">Edward Cullen</p>
+          )}
         </div>
 
         <div className="d-flex flex-row mb-3">
@@ -59,19 +92,55 @@ const SinglePost = () => {
               <div class="accordion-body">
                 <div className="d-flex flex-row  mb-3">
                   <h5>Street Name: </h5>
-                  <p className="align-middle mx-5">Edward Cullen</p>
+
+                  {editbool ? (
+                    <input
+                      className="align-middle mx-5"
+                      type="text"
+                      placeholder="Street Name"
+                    ></input>
+                  ) : (
+                    <p className="align-middle mx-5">Edward Cullen</p>
+                  )}
                 </div>
                 <div className="d-flex flex-row  mb-3">
                   <h5>Suite: </h5>
-                  <p className="align-middle mx-5">Edward Cullen</p>
+
+                  {editbool ? (
+                    <input
+                      className="align-middle mx-5"
+                      type="text"
+                      placeholder="Suite Name"
+                    ></input>
+                  ) : (
+                    <p className="align-middle mx-5">Edward Cullen</p>
+                  )}
                 </div>
                 <div className="d-flex flex-row  mb-3">
                   <h5>City: </h5>
-                  <p className="align-middle mx-5">Edward Cullen</p>
+
+                  {editbool ? (
+                    <input
+                      className="align-middle mx-5"
+                      type="text"
+                      placeholder="City Name"
+                    ></input>
+                  ) : (
+                    <p className="align-middle mx-5">Edward Cullen</p>
+                  )}
                 </div>
                 <div className="d-flex flex-row  mb-3">
                   <h5>ZipCode: </h5>
-                  <p className="align-middle mx-5">Edward Cullen</p>
+
+                  {editbool ? (
+                    <input
+                      className="align-middle mx-5"
+                      type="text"
+                      placeholder="ZipCode"
+                    ></input>
+                  ) : (
+                    <p className="align-middle mx-5">Edward Cullen</p>
+                  )}
                 </div>
               </div>
             </div>
@@ -98,17 +167,44 @@ const SinglePost = () => {
               <div class="accordion-body">
                 <div className="d-flex flex-row  mb-3">
                   <h5>Company Name: </h5>
-                  <p className="align-middle mx-5">Edward Cullen</p>
+
+                  {editbool ? (
+                    <input
+                      className="align-middle mx-5"
+                      type="text"
+                      placeholder="Company Name"
+                    ></input>
+                  ) : (
+                    <p className="align-middle mx-5">Edward Cullen</p>
+                  )}
                 </div>
 
                 <div className="d-flex flex-row  mb-3">
                   <h5>Company catchPhrase: </h5>
-                  <p className="align-middle mx-5">Edward Cullen</p>
+
+                  {editbool ? (
+                    <input
+                      className="align-middle mx-5"
+                      type="text"
+                      placeholder="Company catchPhrase"
+                    ></input>
+                  ) : (
+                    <p className="align-middle mx-5">Edward Cullen</p>
+                  )}
                 </div>
 
                 <div className="d-flex flex-row  mb-3">
                   <h5>Company Product Name (BS): </h5>
-                  <p className="align-middle mx-5">Edward Cullen</p>
+
+                  {editbool ? (
+                    <input
+                      className="align-middle mx-5"
+                      type="text"
+                      placeholder="Company Product Name (BS)"
+                    ></input>
+                  ) : (
+                    <p className="align-middle mx-5">Edward Cullen</p>
+                  )}
                 </div>
               </div>
             </div>
@@ -127,6 +223,30 @@ const SinglePost = () => {
           </div>
         </div>
       </div>
+
+      {editbool && (
+        <button
+          type="button"
+          class="btn btn-danger h-25 my-3 mx-3"
+          onClick={() => setEditbool(!editbool)}
+        >
+          Cancel
+        </button>
+      )}
+      {!editbool && (
+        <button
+          type="button"
+          class="btn btn-secondary h-25 my-3 mx-3"
+          onClick={() => setEditbool(!editbool)}
+        >
+          Edit
+        </button>
+      )}
+      {editbool && (
+        <button type="button" class="btn btn-primary h-25 my-3">
+          save
+        </button>
+      )}
     </div>
   );
 };
