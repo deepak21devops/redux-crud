@@ -1,5 +1,6 @@
 import React from "react";
 import "./allpost.css";
+import { Link } from "react-router-dom";
 const AllPost = () => {
   return (
     <div className="w-30 p-3">
@@ -22,9 +23,11 @@ const AllPost = () => {
           <h5 className="card-title">date</h5>
           <h5 className="card-title">like share subscribe</h5>
           <h5 className="card-title text-end">Author</h5>
-          <a href="p" className="btn btn-primary">
-            View Post
-          </a>
+          <Link to="/123">
+            <a href="p" className="btn btn-primary">
+              View Post
+            </a>
+          </Link>
         </div>
       </div>
     </div>
