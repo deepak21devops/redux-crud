@@ -1,7 +1,19 @@
 import "./singlepost.css";
 import React, { useState } from "react";
-
+import { allPosts } from "../Posts/PostSlice";
+import { allUsers } from "../Posts/UserSlice";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+import ReactionButtons from "../ReactionButtons/ReactionButtons";
 const SinglePost = () => {
+  const params = useParams();
+
+  const posts = useSelector(allPosts);
+  const getpost = posts.find((post) => post.id === Number(params.id));
+
+  const users = useSelector(allUsers);
+  const getUsers = users.find((user) => user.id === Number(params.id));
+
   const [editbool, setEditbool] = useState(false);
   return (
     <div className="container w-75 d-flex flex-row">
@@ -16,7 +28,7 @@ const SinglePost = () => {
               placeholder="Name"
             ></input>
           ) : (
-            <p className="align-middle mx-5">Deepak Kumar Bakki</p>
+            <p className="align-middle mx-5">{getUsers.username}</p>
           )}
         </div>
         <div className="d-flex flex-row   mb-3">
@@ -29,7 +41,7 @@ const SinglePost = () => {
               placeholder="Email"
             ></input>
           ) : (
-            <p className="align-middle mx-5">deepak123@gmail.com</p>
+            <p className="align-middle mx-5">{getUsers.email}</p>
           )}
         </div>
         <div className="d-flex flex-row mb-3  ">
@@ -38,11 +50,7 @@ const SinglePost = () => {
           {editbool ? (
             <textarea className="text-break mx-3"></textarea>
           ) : (
-            <p className="text-break mx-3">
-              lorem10lorem10lorem10lorem10lorem10lorem10lorem10l
-              orem10lorem10lorem10lorem10lorem10lorem10lorem10lo
-              rem10lorem10lorem10
-            </p>
+            <p className="text-break mx-3">{getpost.body}</p>
           )}
         </div>
         <div className="d-flex flex-row  mb-3">
@@ -59,14 +67,12 @@ const SinglePost = () => {
               placeholder="Author Name"
             ></input>
           ) : (
-            <p className="align-middle mx-5">Edward Cullen</p>
+            <p className="align-middle mx-5">{getUsers.name}</p>
           )}
         </div>
 
         <div className="d-flex flex-row mb-3">
-          <p className="">like</p>
-          <p className="mx-4">share</p>
-          <p className="">subscribe</p>
+          <ReactionButtons />
         </div>
 
         <div class="accordion" id="accordionExample">
@@ -100,7 +106,9 @@ const SinglePost = () => {
                       placeholder="Street Name"
                     ></input>
                   ) : (
-                    <p className="align-middle mx-5">Edward Cullen</p>
+                    <p className="align-middle mx-5">
+                      {getUsers.address.street}
+                    </p>
                   )}
                 </div>
                 <div className="d-flex flex-row  mb-3">
@@ -113,7 +121,10 @@ const SinglePost = () => {
                       placeholder="Suite Name"
                     ></input>
                   ) : (
-                    <p className="align-middle mx-5">Edward Cullen</p>
+                    <p className="align-middle mx-5">
+                      {" "}
+                      {getUsers.address.suite}
+                    </p>
                   )}
                 </div>
                 <div className="d-flex flex-row  mb-3">
@@ -126,7 +137,10 @@ const SinglePost = () => {
                       placeholder="City Name"
                     ></input>
                   ) : (
-                    <p className="align-middle mx-5">Edward Cullen</p>
+                    <p className="align-middle mx-5">
+                      {" "}
+                      {getUsers.address.city}
+                    </p>
                   )}
                 </div>
                 <div className="d-flex flex-row  mb-3">
@@ -139,7 +153,10 @@ const SinglePost = () => {
                       placeholder="ZipCode"
                     ></input>
                   ) : (
-                    <p className="align-middle mx-5">Edward Cullen</p>
+                    <p className="align-middle mx-5">
+                      {" "}
+                      {getUsers.address.zipcode}
+                    </p>
                   )}
                 </div>
               </div>
@@ -175,7 +192,10 @@ const SinglePost = () => {
                       placeholder="Company Name"
                     ></input>
                   ) : (
-                    <p className="align-middle mx-5">Edward Cullen</p>
+                    <p className="align-middle mx-5">
+                      {" "}
+                      {getUsers.company.name}
+                    </p>
                   )}
                 </div>
 
@@ -189,7 +209,9 @@ const SinglePost = () => {
                       placeholder="Company catchPhrase"
                     ></input>
                   ) : (
-                    <p className="align-middle mx-5">Edward Cullen</p>
+                    <p className="align-middle mx-5">
+                      {getUsers.company.catchPhrase}
+                    </p>
                   )}
                 </div>
 
@@ -203,7 +225,7 @@ const SinglePost = () => {
                       placeholder="Company Product Name (BS)"
                     ></input>
                   ) : (
-                    <p className="align-middle mx-5">Edward Cullen</p>
+                    <p className="align-middle mx-5">{getUsers.company.bs}</p>
                   )}
                 </div>
               </div>

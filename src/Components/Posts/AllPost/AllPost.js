@@ -3,6 +3,9 @@ import "./allpost.css";
 import { Link } from "react-router-dom";
 import { allPosts, status, error, fetchPosts } from "../../Posts/PostSlice";
 import { useDispatch, useSelector } from "react-redux";
+
+import AuthorDetails from "../../AuthorDetails/AuthorDetails";
+import ReactionButtons from "../../ReactionButtons/ReactionButtons";
 const AllPost = () => {
   const postStatus = useSelector(status);
   const posts = useSelector(allPosts);
@@ -30,12 +33,18 @@ const AllPost = () => {
             </h5>
             <div className="card-body">
               <h5 className="card-title">{ele.title}</h5>
-              <h5 className="card-title">email</h5>
+              <h5 className="card-title">
+                {<AuthorDetails email={ele.userId} />}
+              </h5>
               <p className="card-text">{ele.body}</p>
               <h5 className="card-title">{new Date().toLocaleString()}</h5>
-              <h5 className="card-title">like share subscribe</h5>
-              <h5 className="card-title text-end">Author</h5>
-              <Link to="/123">
+              <h5 className="card-title">
+                <ReactionButtons />
+              </h5>
+              <h5 className="card-title text-end">
+                {<AuthorDetails postId={ele.userId} />}
+              </h5>
+              <Link to={`${ele.id}`}>
                 <a href="p" className="btn btn-primary">
                   View Post
                 </a>
